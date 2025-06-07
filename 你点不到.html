@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .juzhong{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: flex;
+    flex-direction: column; /* 子元素垂直排列 */
+    justify-content: flex-start;
+    }
+    .hide{
+        display: none;
+    }
+    .juzhong1{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    flex-direction: column; /* 子元素垂直排列 */
+    justify-content: flex-start;
+    }
+
+</style>
+<body>
+<div class="juzhong">
+    <div style="display: flex;justify-content: center;">你点不到我</div>
+    <button style="margin-top: auto;">开始尝试</button>
+</div>
+<div id="hide" class="juzhong1">
+<div style="height: 20px;width: 20px;padding-right: 0px;font-size: 20px;">x</div>
+<div style="display: flex;justify-content: center;align-items: center;">就这</div>
+</div>
+<script>
+    let hide=document.getElementById('hide')
+    hide.classList.add('hide')
+    let btu=document.querySelector('button')
+    let juz=document.querySelector('.juzhong')
+    btu.addEventListener('click',()=>{
+        juz.classList.add('hide')
+        hide.classList.remove('hide')
+        hide.style.display='flex'
+        const sj=setInterval(()=>{
+            let pq=1
+       if(pq<50){ const x=Math.random()*(window.innerHeight-50)
+        const y=Math.random()*(window.innerWidth-50)
+        hide.style.left=x+'px'
+        hide.style.top=y+'px'
+        pq++
+    }else{
+        clearInterval(sj)
+    }},100)
+    })
+</script>
+</body>
+</html>
